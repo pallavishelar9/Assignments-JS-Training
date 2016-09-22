@@ -1,0 +1,28 @@
+<html>
+<script>
+    function update() {
+        document.getElementById('ButtonHolder').addEventListener('click', function(e) {
+            if (e.target.classList.contains('aa')) {
+                var btn = document.createElement('button');
+                btn.setAttribute('class', 'a');
+                btn.innerHTML = 'A button';
+
+                var btn1 = document.createElement('button');
+                btn1.setAttribute('class', 'a');
+                btn1.innerHTML = 'A button';
+                this.appendChild(btn);
+                this.appendChild(btn1);
+                this.removeChild(e.target);
+            }
+        });
+    }
+
+</script>
+
+<body>
+    <div id="ButtonHolder">
+        <button class="aa" onclick="update();">AA Button</button>
+    </div>
+</body>
+
+</html>

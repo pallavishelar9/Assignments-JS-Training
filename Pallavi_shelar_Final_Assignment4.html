@@ -1,0 +1,111 @@
+<html>
+<script>
+    function updateForm() {
+        var count = document.getElementById("count").value;
+        var name = document.getElementById("name").value;
+        var relation = document.getElementById("relation").value;
+        var age = document.getElementById("age").value;
+        var activity = document.getElementById("activity").value;
+        var table = document.getElementById("results");
+
+        var row = table.insertRow(-1);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        cell1.innerHTML = name;
+        cell2.innerHTML = relation;
+        cell3.innerHTML = age;
+        cell4.innerHTML = activity;
+
+        /* counting number of rows */
+        var totalRowCount = 0;
+        var rowCount = 0;
+        var table = document.getElementById("results");
+        var rows = table.getElementsByTagName("tr")
+        for (var i = 0; i < rows.length; i++) {
+            totalRowCount++;
+            if (rows[i].getElementsByTagName("td").length > 0) {
+                rowCount++;
+            }
+        }
+
+        if (rowCount == count) {
+            document.getElementById("addInfo").setAttribute("disabled", "disabled");
+        }
+    }
+
+    /* to reset the fields */
+    function resetForm() {
+        document.getElementById("name").value = "";
+        document.getElementById("relation").value = "";
+        document.getElementById("age").value = "";
+        document.getElementById("activity").value = ""
+    }
+
+</script>
+
+<body>
+    <form name="myform" id="myform">
+        <table>
+            <tr>
+                <td>
+                    <label for="count">How many family members you want to add:</label>
+                </td>
+                <td>
+                    <input id="count" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="name">Name:</label>
+                </td>
+                <td>
+                    <input id="name" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="relation">Relation:</label>
+                </td>
+                <td>
+                    <input id="relation" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="age">Age:</label>
+                </td>
+                <td>
+                    <input id="age" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="activity">Activity:</label>
+                </td>
+                <td>
+                    <input id="activity" type="text" />
+                </td>
+            </tr>
+        </table>
+        <input type="button" onClick="resetForm();" id="resetbtn" class="resetbtn" value="Reset" />
+        <button type="button" id="addInfo" onClick="updateForm();">Add To Table</button>
+    </form>
+    <br>
+
+    <table id="results" width="360" border="1">
+        <thead>
+            <tr style="text-align:left">
+                <th scope="col" width="120">Name</th>
+                <th scope="col" width="120">Relation</th>
+                <th scope="col" width="120">Age</th>
+                <th scope="col" width="120">Activities</th>
+            </tr>
+        </thead>
+    </table>
+
+
+</body>
+
+</html>
